@@ -16,7 +16,7 @@ const config = {
     entities: [ProducerSchema, AgricultureSchema, FarmSchema],
     migrations: ["dist/migrations/*{.ts,.js}"],
     autoLoadEntities: true,
-    synchronize: false,
+    synchronize: true,
     
 }
 

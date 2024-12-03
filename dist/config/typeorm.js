@@ -18,7 +18,7 @@ const config = {
     entities: [producer_entity_1.ProducerSchema, agriculture_entity_1.AgricultureSchema, farm_entity_1.FarmSchema],
     migrations: ["dist/migrations/*{.ts,.js}"],
     autoLoadEntities: true,
-    synchronize: false,
+    synchronize: true,
 };
 exports.default = (0, config_1.registerAs)('typeorm', () => config);
 exports.connectionSource = new typeorm_1.DataSource(config);
