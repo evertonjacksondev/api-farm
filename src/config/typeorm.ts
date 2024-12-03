@@ -1,8 +1,8 @@
 import { registerAs } from "@nestjs/config";
 import { config as dotenvConfig } from 'dotenv';
-import { AgricultureSchema } from "src/agriculture/entities/agriculture.entity";
-import { FarmSchema } from "src/farm/entities/farm.entity";
-import { ProducerSchema } from "src/producer/entities/producer.entity";
+import { AgricultureSchema } from "../agriculture/entities/agriculture.entity";
+import { FarmSchema } from "../farm/entities/farm.entity";
+import { ProducerSchema } from "../producer/entities/producer.entity";
 import { DataSource, DataSourceOptions } from "typeorm";
 
 dotenvConfig({ path: '.env' });
