@@ -19,7 +19,7 @@ import { FarmSchema } from './farm/entities/farm.entity';
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE_NAME,
       entities: [AgricultureSchema,ProducerSchema,FarmSchema],
-      synchronize: false,
+      synchronize: true,
     }),
     DashboardModule,
     AgriculturaModule,
