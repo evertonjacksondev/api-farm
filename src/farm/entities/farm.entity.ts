@@ -1,4 +1,4 @@
-import { ProducerSchema } from '../../producer/entities/producer.entity';
+import { ProducerSchema } from 'src/producer/entities/producer.entity';
 import {
   Entity,
   PrimaryGeneratedColumn,

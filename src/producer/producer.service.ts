@@ -10,7 +10,7 @@ import { ProducerSchema } from './entities/producer.entity';
 import { CreateProducerDto } from './dto/create-producer.dto';
 import { UpdateProducerDto } from './dto/update-producer.dto';
 import { cpf, cnpj } from 'cpf-cnpj-validator';
-import { FarmSchema } from '../farm/entities/farm.entity';
+import { FarmSchema } from 'src/farm/entities/farm.entity';
 
 @Injectable()
 export class ProducerService {

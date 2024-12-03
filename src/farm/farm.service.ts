@@ -9,7 +9,7 @@ import { FarmSchema } from './entities/farm.entity';
 import { CreateFarmDto } from './dto/create-farm.dto';
 import { UpdateFarmDto } from './dto/update-farm.dto';
 import { BadRequestException } from '@nestjs/common';
-import { ProducerSchema } from '../producer/entities/producer.entity';
+import { ProducerSchema } from 'src/producer/entities/producer.entity';
 
 @Injectable()
 export class FarmService {

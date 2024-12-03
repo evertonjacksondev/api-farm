@@ -1,4 +1,4 @@
-import { FarmSchema } from '../../farm/entities/farm.entity';
+import { FarmSchema } from 'src//farm/entities/farm.entity';
 import {
   Entity,
   PrimaryGeneratedColumn,
