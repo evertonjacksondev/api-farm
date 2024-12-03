@@ -12,12 +12,14 @@ const producer_controller_1 = require("./producer.controller");
 const typeorm_1 = require("@nestjs/typeorm");
 const producer_service_1 = require("./producer.service");
 const producer_entity_1 = require("./entities/producer.entity");
+const agriculture_entity_1 = require("../agriculture/entities/agriculture.entity");
+const farm_entity_1 = require("../farm/entities/farm.entity");
 let ProducerModule = class ProducerModule {
 };
 exports.ProducerModule = ProducerModule;
 exports.ProducerModule = ProducerModule = __decorate([
     (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forFeature([producer_entity_1.ProducerSchema])],
+        imports: [typeorm_1.TypeOrmModule.forFeature([producer_entity_1.ProducerSchema, agriculture_entity_1.AgricultureSchema, farm_entity_1.FarmSchema])],
         providers: [producer_service_1.ProducerService],
         controllers: [producer_controller_1.ProducerController],
         exports: [typeorm_1.TypeOrmModule],

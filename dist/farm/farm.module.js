@@ -13,12 +13,14 @@ const farm_service_1 = require("./farm.service");
 const producer_module_1 = require("../producer/producer.module");
 const farm_controller_1 = require("./farm.controller");
 const farm_entity_1 = require("./entities/farm.entity");
+const producer_entity_1 = require("../producer/entities/producer.entity");
+const agriculture_entity_1 = require("../agriculture/entities/agriculture.entity");
 let FarmModule = class FarmModule {
 };
 exports.FarmModule = FarmModule;
 exports.FarmModule = FarmModule = __decorate([
     (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forFeature([farm_entity_1.FarmSchema]), producer_module_1.ProducerModule],
+        imports: [typeorm_1.TypeOrmModule.forFeature([farm_entity_1.FarmSchema, producer_entity_1.ProducerSchema, agriculture_entity_1.AgricultureSchema]), producer_module_1.ProducerModule],
         providers: [farm_service_1.FarmService],
         controllers: [farm_controller_1.FarmController],
     })
