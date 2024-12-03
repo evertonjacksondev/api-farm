@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,12 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-import { Controller, Post, Body, Put, Param, Delete, ParseIntPipe, Get, Query, } from '@nestjs/common';
-import { CreateProducerDto } from './dto/create-producer.dto';
-import { UpdateProducerDto } from './dto/update-producer.dto';
-import { ProducerService } from './producer.service';
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ProducerController = void 0;
+const common_1 = require("@nestjs/common");
+const create_producer_dto_1 = require("./dto/create-producer.dto");
+const update_producer_dto_1 = require("./dto/update-producer.dto");
+const producer_service_1 = require("./producer.service");
 let ProducerController = class ProducerController {
-    producerService;
     constructor(producerService) {
         this.producerService = producerService;
     }
@@ -36,46 +38,46 @@ let ProducerController = class ProducerController {
         return this.producerService.remove(id);
     }
 };
+exports.ProducerController = ProducerController;
 __decorate([
-    Get('/list'),
-    __param(0, Query('page', ParseIntPipe)),
-    __param(1, Query('limit', ParseIntPipe)),
+    (0, common_1.Get)('/list'),
+    __param(0, (0, common_1.Query)('page', common_1.ParseIntPipe)),
+    __param(1, (0, common_1.Query)('limit', common_1.ParseIntPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, Number]),
     __metadata("design:returntype", Promise)
 ], ProducerController.prototype, "getProducerList", null);
 __decorate([
-    Post('/'),
-    __param(0, Body()),
+    (0, common_1.Post)('/'),
+    __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [CreateProducerDto]),
+    __metadata("design:paramtypes", [create_producer_dto_1.CreateProducerDto]),
     __metadata("design:returntype", Promise)
 ], ProducerController.prototype, "createProducer", null);
 __decorate([
-    Get('/:id'),
-    __param(0, Param('id', ParseIntPipe)),
+    (0, common_1.Get)('/:id'),
+    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], ProducerController.prototype, "getProducerId", null);
 __decorate([
-    Put(':id'),
-    __param(0, Param('id', ParseIntPipe)),
-    __param(1, Body()),
+    (0, common_1.Put)(':id'),
+    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
+    __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number, UpdateProducerDto]),
+    __metadata("design:paramtypes", [Number, update_producer_dto_1.UpdateProducerDto]),
     __metadata("design:returntype", Promise)
 ], ProducerController.prototype, "updateProducer", null);
 __decorate([
-    Delete(':id'),
-    __param(0, Param('id', ParseIntPipe)),
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], ProducerController.prototype, "removeProducer", null);
-ProducerController = __decorate([
-    Controller('/v1/producer'),
-    __metadata("design:paramtypes", [ProducerService])
+exports.ProducerController = ProducerController = __decorate([
+    (0, common_1.Controller)('/v1/producer'),
+    __metadata("design:paramtypes", [producer_service_1.ProducerService])
 ], ProducerController);
-export { ProducerController };
 //# sourceMappingURL=producer.controller.js.map

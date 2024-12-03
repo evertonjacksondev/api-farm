@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,19 +11,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-import { Controller, Post, Body, Put, Param, Delete, ParseIntPipe, Get, Query, } from '@nestjs/common';
-import { AgricultureService } from './agriculture.service';
-import { CreateAgricultureDto } from './dto/create-agriculture.dto';
-import { UpdateAgricultureDto } from './dto/update-agriculture.dto';
-import { isNumber } from 'class-validator';
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.AgricultureController = void 0;
+const common_1 = require("@nestjs/common");
+const agriculture_service_1 = require("./agriculture.service");
+const create_agriculture_dto_1 = require("./dto/create-agriculture.dto");
+const update_agriculture_dto_1 = require("./dto/update-agriculture.dto");
+const class_validator_1 = require("class-validator");
 let AgricultureController = class AgricultureController {
-    agricultureService;
     constructor(agricultureService) {
         this.agricultureService = agricultureService;
     }
     async getAgricultureList(page = 1, limit = 10) {
-        isNumber(page) ? page : (page = 1);
-        isNumber(limit) ? limit : (limit = 1);
+        (0, class_validator_1.isNumber)(page) ? page : (page = 1);
+        (0, class_validator_1.isNumber)(limit) ? limit : (limit = 1);
         return await this.agricultureService.getAgricultureList(page, limit);
     }
     async createAgriculture(createAgricultureDto) {
@@ -38,46 +40,46 @@ let AgricultureController = class AgricultureController {
         return this.agricultureService.remove(id);
     }
 };
+exports.AgricultureController = AgricultureController;
 __decorate([
-    Get('/list'),
-    __param(0, Query('page', ParseIntPipe)),
-    __param(1, Query('limit', ParseIntPipe)),
+    (0, common_1.Get)('/list'),
+    __param(0, (0, common_1.Query)('page', common_1.ParseIntPipe)),
+    __param(1, (0, common_1.Query)('limit', common_1.ParseIntPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, Number]),
     __metadata("design:returntype", Promise)
 ], AgricultureController.prototype, "getAgricultureList", null);
 __decorate([
-    Post('/'),
-    __param(0, Body()),
+    (0, common_1.Post)('/'),
+    __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [CreateAgricultureDto]),
+    __metadata("design:paramtypes", [create_agriculture_dto_1.CreateAgricultureDto]),
     __metadata("design:returntype", Promise)
 ], AgricultureController.prototype, "createAgriculture", null);
 __decorate([
-    Get('/:id'),
-    __param(0, Param('id', ParseIntPipe)),
+    (0, common_1.Get)('/:id'),
+    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], AgricultureController.prototype, "getAgricultureId", null);
 __decorate([
-    Put(':id'),
-    __param(0, Param('id', ParseIntPipe)),
-    __param(1, Body()),
+    (0, common_1.Put)(':id'),
+    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
+    __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number, UpdateAgricultureDto]),
+    __metadata("design:paramtypes", [Number, update_agriculture_dto_1.UpdateAgricultureDto]),
     __metadata("design:returntype", Promise)
 ], AgricultureController.prototype, "updateAgriculture", null);
 __decorate([
-    Delete(':id'),
-    __param(0, Param('id', ParseIntPipe)),
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], AgricultureController.prototype, "removeAgriculture", null);
-AgricultureController = __decorate([
-    Controller('/v1/cultura'),
-    __metadata("design:paramtypes", [AgricultureService])
+exports.AgricultureController = AgricultureController = __decorate([
+    (0, common_1.Controller)('/v1/cultura'),
+    __metadata("design:paramtypes", [agriculture_service_1.AgricultureService])
 ], AgricultureController);
-export { AgricultureController };
 //# sourceMappingURL=agriculture.controller.js.map

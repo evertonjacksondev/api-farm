@@ -1,8 +1,12 @@
-import { registerDecorator, } from 'class-validator';
-import { cpf, cnpj } from 'cpf-cnpj-validator';
-export function IsValidCpf(validationOptions) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.IsValidCpf = IsValidCpf;
+exports.IsValidCnpj = IsValidCnpj;
+const class_validator_1 = require("class-validator");
+const cpf_cnpj_validator_1 = require("cpf-cnpj-validator");
+function IsValidCpf(validationOptions) {
     return function (object, propertyName) {
-        registerDecorator({
+        (0, class_validator_1.registerDecorator)({
             name: 'isValidCpf',
             target: object.constructor,
             propertyName: propertyName,
@@ -10,7 +14,7 @@ export function IsValidCpf(validationOptions) {
             options: validationOptions,
             validator: {
                 validate(value, args) {
-                    return value ? cpf.isValid(value) : true;
+                    return value ? cpf_cnpj_validator_1.cpf.isValid(value) : true;
                 },
                 defaultMessage(args) {
                     return `${args.property} is not a valid CPF`;
@@ -19,9 +23,9 @@ export function IsValidCpf(validationOptions) {
         });
     };
 }
-export function IsValidCnpj(validationOptions) {
+function IsValidCnpj(validationOptions) {
     return function (object, propertyName) {
-        registerDecorator({
+        (0, class_validator_1.registerDecorator)({
             name: 'isValidCnpj',
             target: object.constructor,
             propertyName: propertyName,
@@ -29,7 +33,7 @@ export function IsValidCnpj(validationOptions) {
             options: validationOptions,
             validator: {
                 validate(value, args) {
-                    return value ? cnpj.isValid(value) : true;
+                    return value ? cpf_cnpj_validator_1.cnpj.isValid(value) : true;
                 },
                 defaultMessage(args) {
                     return `${args.property} is not a valid CNPJ`;

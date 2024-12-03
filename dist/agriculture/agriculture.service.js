@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,14 +11,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-import { Injectable, NotFoundException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { AgricultureSchema } from './entities/agriculture.entity';
-import { FarmSchema } from '../farm/entities/farm.entity';
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.AgricultureService = void 0;
+const common_1 = require("@nestjs/common");
+const typeorm_1 = require("@nestjs/typeorm");
+const typeorm_2 = require("typeorm");
+const agriculture_entity_1 = require("./entities/agriculture.entity");
+const farm_entity_1 = require("../farm/entities/farm.entity");
 let AgricultureService = class AgricultureService {
-    agricultureRepository;
-    farmRepository;
     constructor(agricultureRepository, farmRepository) {
         this.agricultureRepository = agricultureRepository;
         this.farmRepository = farmRepository;
@@ -28,7 +29,7 @@ let AgricultureService = class AgricultureService {
             relations: ['farm'],
         });
         if (!agriculture) {
-            throw new NotFoundException(`Cultivo com ID ${id} não encontrado.`);
+            throw new common_1.NotFoundException(`Cultivo com ID ${id} não encontrado.`);
         }
         return agriculture;
     }
@@ -50,7 +51,7 @@ let AgricultureService = class AgricultureService {
             where: { id: createAgricultureDTO.farmId },
         });
         if (!farm) {
-            throw new NotFoundException(`Fazenda com ID ${createAgricultureDTO.farmId} não encontrada.`);
+            throw new common_1.NotFoundException(`Fazenda com ID ${createAgricultureDTO.farmId} não encontrada.`);
         }
         const agricultureExistsHasFarm = await this.agricultureRepository.findOne({
             where: {
@@ -59,7 +60,7 @@ let AgricultureService = class AgricultureService {
             },
         });
         if (agricultureExistsHasFarm) {
-            throw new NotFoundException(`Esse cultivo já existe para esta fazenda.`);
+            throw new common_1.NotFoundException(`Esse cultivo já existe para esta fazenda.`);
         }
         const totalAreaUsed = await this.agricultureRepository
             .createQueryBuilder('agriculture')
@@ -70,7 +71,7 @@ let AgricultureService = class AgricultureService {
             .getRawOne();
         const usedArea = totalAreaUsed?.total ?? 0;
         if (usedArea + Number(createAgricultureDTO.areaUsed) > farm.arable) {
-            throw new NotFoundException(`Não é possível realizar o plantio, excedeu o limite agricultável.`);
+            throw new common_1.NotFoundException(`Não é possível realizar o plantio, excedeu o limite agricultável.`);
         }
         const agriculture = this.agricultureRepository.create({
             ...createAgricultureDTO,
@@ -83,7 +84,7 @@ let AgricultureService = class AgricultureService {
             where: { id },
         });
         if (!agriculture) {
-            throw new NotFoundException('Produtor não encontrado');
+            throw new common_1.NotFoundException('Produtor não encontrado');
         }
         await this.agricultureRepository.remove(agriculture);
     }
@@ -92,7 +93,7 @@ let AgricultureService = class AgricultureService {
             where: { id: updateAgricultureDto.farmId },
         });
         if (!farm) {
-            throw new NotFoundException(`Fazenda com ID ${updateAgricultureDto.farmId} não encontrada.`);
+            throw new common_1.NotFoundException(`Fazenda com ID ${updateAgricultureDto.farmId} não encontrada.`);
         }
         await this.isExceededAgriculturalLimit(updateAgricultureDto.farmId, updateAgricultureDto.areaUsed, id);
         const agriculture = await this.agricultureRepository.preload({
@@ -101,7 +102,7 @@ let AgricultureService = class AgricultureService {
             farm,
         });
         if (!agriculture) {
-            throw new NotFoundException(`Agricultura com ID ${id} não encontrada.`);
+            throw new common_1.NotFoundException(`Agricultura com ID ${id} não encontrada.`);
         }
         return this.agricultureRepository.save(agriculture);
     }
@@ -110,7 +111,7 @@ let AgricultureService = class AgricultureService {
             where: { id: farmId },
         });
         if (!farm) {
-            throw new NotFoundException(`Fazenda com ID ${farmId} não encontrada.`);
+            throw new common_1.NotFoundException(`Fazenda com ID ${farmId} não encontrada.`);
         }
         const totalAreaUsed = await this.agricultureRepository
             .createQueryBuilder('agriculture')
@@ -120,17 +121,17 @@ let AgricultureService = class AgricultureService {
             .getRawOne();
         const usedArea = totalAreaUsed?.total ?? 0;
         if (usedArea + areaUsed > farm.arable) {
-            throw new NotFoundException(`Não é possível realizar o plantio, excedeu o limite agricultável.`);
+            throw new common_1.NotFoundException(`Não é possível realizar o plantio, excedeu o limite agricultável.`);
         }
         return false;
     }
 };
-AgricultureService = __decorate([
-    Injectable(),
-    __param(0, InjectRepository(AgricultureSchema)),
-    __param(1, InjectRepository(FarmSchema)),
-    __metadata("design:paramtypes", [Repository,
-        Repository])
+exports.AgricultureService = AgricultureService;
+exports.AgricultureService = AgricultureService = __decorate([
+    (0, common_1.Injectable)(),
+    __param(0, (0, typeorm_1.InjectRepository)(agriculture_entity_1.AgricultureSchema)),
+    __param(1, (0, typeorm_1.InjectRepository)(farm_entity_1.FarmSchema)),
+    __metadata("design:paramtypes", [typeorm_2.Repository,
+        typeorm_2.Repository])
 ], AgricultureService);
-export { AgricultureService };
 //# sourceMappingURL=agriculture.service.js.map

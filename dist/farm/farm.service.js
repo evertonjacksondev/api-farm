@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,15 +11,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-import { ConflictException, Injectable, NotFoundException, } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { FarmSchema } from './entities/farm.entity';
-import { BadRequestException } from '@nestjs/common';
-import { ProducerSchema } from '../producer/entities/producer.entity';
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.FarmService = void 0;
+const common_1 = require("@nestjs/common");
+const typeorm_1 = require("@nestjs/typeorm");
+const typeorm_2 = require("typeorm");
+const farm_entity_1 = require("./entities/farm.entity");
+const common_2 = require("@nestjs/common");
+const producer_entity_1 = require("../producer/entities/producer.entity");
 let FarmService = class FarmService {
-    farmRepository;
-    producerRepository;
     constructor(farmRepository, producerRepository) {
         this.farmRepository = farmRepository;
         this.producerRepository = producerRepository;
@@ -26,7 +27,7 @@ let FarmService = class FarmService {
     validateAreas(farm) {
         const { totalArea, arable } = farm;
         if (Number(arable) > Number(totalArea)) {
-            throw new BadRequestException('A área agrícola não pode ser maior que a área total da fazenda.');
+            throw new common_2.BadRequestException('A área agrícola não pode ser maior que a área total da fazenda.');
         }
     }
     async getFarmId(id) {
@@ -35,7 +36,7 @@ let FarmService = class FarmService {
             relations: ['producer'],
         });
         if (!farm) {
-            throw new NotFoundException(`Fazenda com ID ${id} não encontrado.`);
+            throw new common_1.NotFoundException(`Fazenda com ID ${id} não encontrado.`);
         }
         return farm;
     }
@@ -58,22 +59,22 @@ let FarmService = class FarmService {
             where: { id: createFarmDto.producerId },
         });
         if (!producer) {
-            throw new NotFoundException(`Produtor com ID ${createFarmDto.producerId} não encontrado.`);
+            throw new common_1.NotFoundException(`Produtor com ID ${createFarmDto.producerId} não encontrado.`);
         }
         const farmNameExists = await this.farmRepository.findOne({
             where: { farmName: createFarmDto.farmName },
         });
         if (farmNameExists) {
-            throw new ConflictException(`Já existe uma fazenda com o nome ${createFarmDto.farmName}.`);
+            throw new common_1.ConflictException(`Já existe uma fazenda com o nome ${createFarmDto.farmName}.`);
         }
         const farmEmail = await this.farmRepository.findOne({
             where: { email: createFarmDto.email },
         });
         if (farmEmail) {
-            throw new ConflictException(`Já existe uma fazenda com o email ${createFarmDto.email}.`);
+            throw new common_1.ConflictException(`Já existe uma fazenda com o email ${createFarmDto.email}.`);
         }
         if (!producer) {
-            throw new NotFoundException(`Produtor com ID ${createFarmDto.producerId} não encontrado.`);
+            throw new common_1.NotFoundException(`Produtor com ID ${createFarmDto.producerId} não encontrado.`);
         }
         const farm = this.farmRepository.create({
             ...createFarmDto,
@@ -88,7 +89,7 @@ let FarmService = class FarmService {
         });
         try {
             if (!farm) {
-                throw new NotFoundException(`Fazenda com ID ${id} não encontrado.`);
+                throw new common_1.NotFoundException(`Fazenda com ID ${id} não encontrado.`);
             }
             await this.farmRepository.update(id, updateFarmDto);
         }
@@ -102,17 +103,17 @@ let FarmService = class FarmService {
             where: { id },
         });
         if (!farm) {
-            throw new NotFoundException(`Produtor rural com ID ${id} não encontrado.`);
+            throw new common_1.NotFoundException(`Produtor rural com ID ${id} não encontrado.`);
         }
         await this.farmRepository.delete(id);
     }
 };
-FarmService = __decorate([
-    Injectable(),
-    __param(0, InjectRepository(FarmSchema)),
-    __param(1, InjectRepository(ProducerSchema)),
-    __metadata("design:paramtypes", [Repository,
-        Repository])
+exports.FarmService = FarmService;
+exports.FarmService = FarmService = __decorate([
+    (0, common_1.Injectable)(),
+    __param(0, (0, typeorm_1.InjectRepository)(farm_entity_1.FarmSchema)),
+    __param(1, (0, typeorm_1.InjectRepository)(producer_entity_1.ProducerSchema)),
+    __metadata("design:paramtypes", [typeorm_2.Repository,
+        typeorm_2.Repository])
 ], FarmService);
-export { FarmService };
 //# sourceMappingURL=farm.service.js.map

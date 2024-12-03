@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,16 +11,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { FarmSchema } from '../farm/entities/farm.entity';
-import { AgricultureSchema } from "../agriculture/entities/agriculture.entity";
-import { ProducerSchema } from '../producer/entities/producer.entity';
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.DashBoardService = void 0;
+const common_1 = require("@nestjs/common");
+const typeorm_1 = require("@nestjs/typeorm");
+const typeorm_2 = require("typeorm");
+const farm_entity_1 = require("../farm/entities/farm.entity");
+const agriculture_entity_1 = require("../agriculture/entities/agriculture.entity");
+const producer_entity_1 = require("../producer/entities/producer.entity");
 let DashBoardService = class DashBoardService {
-    farmRepository;
-    agricultureRepository;
-    producerRepository;
     constructor(farmRepository, agricultureRepository, producerRepository) {
         this.farmRepository = farmRepository;
         this.agricultureRepository = agricultureRepository;
@@ -76,14 +76,14 @@ let DashBoardService = class DashBoardService {
         return { totalProducers };
     }
 };
-DashBoardService = __decorate([
-    Injectable(),
-    __param(0, InjectRepository(FarmSchema)),
-    __param(1, InjectRepository(AgricultureSchema)),
-    __param(2, InjectRepository(ProducerSchema)),
-    __metadata("design:paramtypes", [Repository,
-        Repository,
-        Repository])
+exports.DashBoardService = DashBoardService;
+exports.DashBoardService = DashBoardService = __decorate([
+    (0, common_1.Injectable)(),
+    __param(0, (0, typeorm_1.InjectRepository)(farm_entity_1.FarmSchema)),
+    __param(1, (0, typeorm_1.InjectRepository)(agriculture_entity_1.AgricultureSchema)),
+    __param(2, (0, typeorm_1.InjectRepository)(producer_entity_1.ProducerSchema)),
+    __metadata("design:paramtypes", [typeorm_2.Repository,
+        typeorm_2.Repository,
+        typeorm_2.Repository])
 ], DashBoardService);
-export { DashBoardService };
 //# sourceMappingURL=dashboard.service.js.map

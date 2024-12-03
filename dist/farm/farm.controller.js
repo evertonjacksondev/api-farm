@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,12 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-import { Controller, Post, Body, Put, Param, Delete, ParseIntPipe, Get, Query, } from '@nestjs/common';
-import { FarmService } from './farm.service';
-import { CreateFarmDto } from './dto/create-farm.dto';
-import { UpdateFarmDto } from './dto/update-farm.dto';
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.FarmController = void 0;
+const common_1 = require("@nestjs/common");
+const farm_service_1 = require("./farm.service");
+const create_farm_dto_1 = require("./dto/create-farm.dto");
+const update_farm_dto_1 = require("./dto/update-farm.dto");
 let FarmController = class FarmController {
-    farmerService;
     constructor(farmerService) {
         this.farmerService = farmerService;
     }
@@ -45,46 +47,46 @@ let FarmController = class FarmController {
         return this.farmerService.removeFarm(id);
     }
 };
+exports.FarmController = FarmController;
 __decorate([
-    Post('/'),
-    __param(0, Body()),
+    (0, common_1.Post)('/'),
+    __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [CreateFarmDto]),
+    __metadata("design:paramtypes", [create_farm_dto_1.CreateFarmDto]),
     __metadata("design:returntype", Promise)
 ], FarmController.prototype, "createFarm", null);
 __decorate([
-    Get('/list'),
-    __param(0, Query('page', ParseIntPipe)),
-    __param(1, Query('limit', ParseIntPipe)),
+    (0, common_1.Get)('/list'),
+    __param(0, (0, common_1.Query)('page', common_1.ParseIntPipe)),
+    __param(1, (0, common_1.Query)('limit', common_1.ParseIntPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number, Number]),
     __metadata("design:returntype", Promise)
 ], FarmController.prototype, "getFarmsList", null);
 __decorate([
-    Get('/:id'),
-    __param(0, Param('id', ParseIntPipe)),
+    (0, common_1.Get)('/:id'),
+    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], FarmController.prototype, "getFarmId", null);
 __decorate([
-    Put(':id'),
-    __param(0, Param('id', ParseIntPipe)),
-    __param(1, Body()),
+    (0, common_1.Put)(':id'),
+    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
+    __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number, UpdateFarmDto]),
+    __metadata("design:paramtypes", [Number, update_farm_dto_1.UpdateFarmDto]),
     __metadata("design:returntype", Promise)
 ], FarmController.prototype, "updateFarm", null);
 __decorate([
-    Delete(':id'),
-    __param(0, Param('id', ParseIntPipe)),
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], FarmController.prototype, "removeFarm", null);
-FarmController = __decorate([
-    Controller('/v1/farm'),
-    __metadata("design:paramtypes", [FarmService])
+exports.FarmController = FarmController = __decorate([
+    (0, common_1.Controller)('/v1/farm'),
+    __metadata("design:paramtypes", [farm_service_1.FarmService])
 ], FarmController);
-export { FarmController };
 //# sourceMappingURL=farm.controller.js.map

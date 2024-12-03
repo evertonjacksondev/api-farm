@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,94 +8,81 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { ProducerSchema } from '../../producer/entities/producer.entity';
-import { Entity, PrimaryGeneratedColumn, Column, UpdateDateColumn, ManyToOne, JoinColumn, } from 'typeorm';
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.FarmSchema = void 0;
+const producer_entity_1 = require("../../producer/entities/producer.entity");
+const typeorm_1 = require("typeorm");
 let FarmSchema = class FarmSchema {
-    id;
-    address;
-    phone;
-    farmName;
-    email;
-    totalArea;
-    arable;
-    UF;
-    city;
-    number;
-    neighborhood;
-    producer;
-    producerId;
-    createdAt;
-    updatedAt;
 };
+exports.FarmSchema = FarmSchema;
 __decorate([
-    PrimaryGeneratedColumn(),
+    (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
 ], FarmSchema.prototype, "id", void 0);
 __decorate([
-    Column(),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], FarmSchema.prototype, "address", void 0);
 __decorate([
-    Column(),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], FarmSchema.prototype, "phone", void 0);
 __decorate([
-    Column({ unique: true }),
+    (0, typeorm_1.Column)({ unique: true }),
     __metadata("design:type", String)
 ], FarmSchema.prototype, "farmName", void 0);
 __decorate([
-    Column({ unique: true }),
+    (0, typeorm_1.Column)({ unique: true }),
     __metadata("design:type", String)
 ], FarmSchema.prototype, "email", void 0);
 __decorate([
-    Column(),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
 ], FarmSchema.prototype, "totalArea", void 0);
 __decorate([
-    Column(),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
 ], FarmSchema.prototype, "arable", void 0);
 __decorate([
-    Column(),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], FarmSchema.prototype, "UF", void 0);
 __decorate([
-    Column(),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], FarmSchema.prototype, "city", void 0);
 __decorate([
-    Column(),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
 ], FarmSchema.prototype, "number", void 0);
 __decorate([
-    Column(),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], FarmSchema.prototype, "neighborhood", void 0);
 __decorate([
-    ManyToOne(() => ProducerSchema, (producer) => producer.id, {
+    (0, typeorm_1.ManyToOne)(() => producer_entity_1.ProducerSchema, (producer) => producer.id, {
         onDelete: 'CASCADE',
     }),
-    JoinColumn({ name: 'producerId' }),
-    __metadata("design:type", ProducerSchema)
+    (0, typeorm_1.JoinColumn)({ name: 'producerId' }),
+    __metadata("design:type", producer_entity_1.ProducerSchema)
 ], FarmSchema.prototype, "producer", void 0);
 __decorate([
-    Column(),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
 ], FarmSchema.prototype, "producerId", void 0);
 __decorate([
-    Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' }),
+    (0, typeorm_1.Column)({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' }),
     __metadata("design:type", Date)
 ], FarmSchema.prototype, "createdAt", void 0);
 __decorate([
-    UpdateDateColumn({
+    (0, typeorm_1.UpdateDateColumn)({
         type: 'timestamp',
         default: () => 'CURRENT_TIMESTAMP',
         onUpdate: 'CURRENT_TIMESTAMP',
     }),
     __metadata("design:type", Date)
 ], FarmSchema.prototype, "updatedAt", void 0);
-FarmSchema = __decorate([
-    Entity('')
+exports.FarmSchema = FarmSchema = __decorate([
+    (0, typeorm_1.Entity)('')
 ], FarmSchema);
-export { FarmSchema };
 //# sourceMappingURL=farm.entity.js.map
