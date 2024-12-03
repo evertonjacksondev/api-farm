@@ -7,7 +7,6 @@ import {
 
 
 @Entity({name:'producer_schema',schema: 'public' })
-
 export class ProducerSchema {
   @PrimaryGeneratedColumn()
   id: number;

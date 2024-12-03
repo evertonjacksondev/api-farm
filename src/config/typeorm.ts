@@ -1,5 +1,8 @@
 import { registerAs } from "@nestjs/config";
 import { config as dotenvConfig } from 'dotenv';
+import { AgricultureSchema } from "src/agriculture/entities/agriculture.entity";
+import { FarmSchema } from "src/farm/entities/farm.entity";
+import { ProducerSchema } from "src/producer/entities/producer.entity";
 import { DataSource, DataSourceOptions } from "typeorm";
 
 dotenvConfig({ path: '.env' });
@@ -10,7 +13,7 @@ const config = {
     username: `${process.env.DB_USERNAME}`,
     password: `${process.env.DB_PASSWORD}`,
     database: `${process.env.DB_DATABASE_NAME}`,
-    entities: ["dist/**/*.entity{.ts,.js}"],
+    entities: [ProducerSchema, AgricultureSchema, FarmSchema],
     migrations: ["dist/migrations/*{.ts,.js}"],
     autoLoadEntities: true,
     synchronize: false,
