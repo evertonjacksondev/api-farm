@@ -10,9 +10,9 @@ import {
   Query,
 } from '@nestjs/common';
 import { ProducerService } from './producer.service';
+import { ProducerSchema } from './entities/producer.entity';
 import { CreateProducerDto } from './dto/create-producer.dto';
 import { UpdateProducerDto } from './dto/update-producer.dto';
-import { ProducerSchema } from './entities/producer.entity';
 
 @Controller('/v1/producer')
 export class ProducerController {
