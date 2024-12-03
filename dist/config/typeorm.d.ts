@@ -1,6 +1,6 @@
-import { AgricultureSchema } from "src/agriculture/entities/agriculture.entity";
-import { FarmSchema } from "src/farm/entities/farm.entity";
-import { ProducerSchema } from "src/producer/entities/producer.entity";
+import { AgricultureSchema } from "../agriculture/entities/agriculture.entity";
+import { FarmSchema } from "../farm/entities/farm.entity";
+import { ProducerSchema } from "../producer/entities/producer.entity";
 import { DataSource } from "typeorm";
 declare const _default: (() => {
     type: string;
