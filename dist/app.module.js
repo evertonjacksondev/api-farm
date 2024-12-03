@@ -14,23 +14,21 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const agriculture_module_1 = require("./agriculture/agriculture.module");
 const config_1 = require("@nestjs/config");
+const config_2 = require("@nestjs/config");
+const typeorm_2 = require("./config/typeorm");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            config_1.ConfigModule.forRoot(),
-            typeorm_1.TypeOrmModule.forRoot({
-                type: 'postgres',
-                host: process.env.DB_HOST,
-                port: Number(process.env.DB_PORT),
-                username: process.env.DB_USERNAME,
-                password: process.env.DB_PASSWORD,
-                database: process.env.DB_DATABASE_NAME,
-                entities: [__dirname + '/**/**/*.entity{.js,.ts}'],
-                synchronize: false,
-                autoLoadEntities: true,
+            config_1.ConfigModule.forRoot({
+                isGlobal: true,
+                load: [typeorm_2.default]
+            }),
+            typeorm_1.TypeOrmModule.forRootAsync({
+                inject: [config_2.ConfigService],
+                useFactory: async (configService) => (configService.get('typeorm'))
             }),
             dashboard_module_1.DashboardModule,
             agriculture_module_1.AgriculturaModule,

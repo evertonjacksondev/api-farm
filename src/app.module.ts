@@ -5,20 +5,18 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AgriculturaModule } from './agriculture/agriculture.module';
 import { ConfigModule } from '@nestjs/config';
+import { ConfigService } from '@nestjs/config';
+import typeorm from './config/typeorm';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: process.env.DB_HOST,
-      port: Number(process.env.DB_PORT),
-      username: process.env.DB_USERNAME,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_DATABASE_NAME,
-      entities: [__dirname + '/**/**/*.entity{.js,.ts}'],
-      synchronize: false,
-      autoLoadEntities: true,
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [typeorm]
+    }),
+    TypeOrmModule.forRootAsync({
+      inject: [ConfigService],
+      useFactory: async (configService: ConfigService) => (configService.get('typeorm'))
     }),
     DashboardModule,
     AgriculturaModule,
@@ -28,4 +26,7 @@ import { ConfigModule } from '@nestjs/config';
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule { }
+
+
+
