@@ -5,7 +5,6 @@ import { AgricultureSchema } from './entities/agriculture.entity';
 import { CreateAgricultureDto } from './dto/create-agriculture.dto';
 import { UpdateAgricultureDto } from './dto/update-agriculture.dto';
 import { FarmSchema } from '../farm/entities/farm.entity';
-import { ProducerSchema } from '../producer/entities/producer.entity';
 
 @Injectable()
 export class AgricultureService {
@@ -15,9 +14,7 @@ export class AgricultureService {
 
     @InjectRepository(FarmSchema)
     private readonly farmRepository: Repository<FarmSchema>,
-
-    @InjectRepository(ProducerSchema)
-    private readonly producerRepository: Repository<ProducerSchema>,
+ 
   ) {}
 
   async getAgricultureId(id: number): Promise<AgricultureSchema> {

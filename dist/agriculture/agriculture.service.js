@@ -18,12 +18,10 @@ const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
 const agriculture_entity_1 = require("./entities/agriculture.entity");
 const farm_entity_1 = require("../farm/entities/farm.entity");
-const producer_entity_1 = require("../producer/entities/producer.entity");
 let AgricultureService = class AgricultureService {
-    constructor(agricultureRepository, farmRepository, producerRepository) {
+    constructor(agricultureRepository, farmRepository) {
         this.agricultureRepository = agricultureRepository;
         this.farmRepository = farmRepository;
-        this.producerRepository = producerRepository;
     }
     async getAgricultureId(id) {
         const agriculture = await this.agricultureRepository.findOne({
@@ -133,9 +131,7 @@ exports.AgricultureService = AgricultureService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(agriculture_entity_1.AgricultureSchema)),
     __param(1, (0, typeorm_1.InjectRepository)(farm_entity_1.FarmSchema)),
-    __param(2, (0, typeorm_1.InjectRepository)(producer_entity_1.ProducerSchema)),
     __metadata("design:paramtypes", [typeorm_2.Repository,
-        typeorm_2.Repository,
         typeorm_2.Repository])
 ], AgricultureService);
 //# sourceMappingURL=agriculture.service.js.map

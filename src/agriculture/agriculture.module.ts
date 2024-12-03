@@ -6,12 +6,15 @@ import { AgricultureSchema } from './entities/agriculture.entity';
 import { ProducerSchema } from '../producer/entities/producer.entity';
 import { AgricultureController } from './agriculture.controller';
 import { AgricultureService } from './agriculture.service';
+import { ProducerModule } from 'src/producer/producer.module';
 
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([FarmSchema, AgricultureSchema, ProducerSchema]),
     FarmModule,
+    AgriculturaModule,
+    ProducerModule
   ],
   controllers: [AgricultureController],
   providers: [AgricultureService, AgricultureService],
