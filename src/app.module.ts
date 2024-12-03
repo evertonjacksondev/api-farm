@@ -5,9 +5,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AgriculturaModule } from './agriculture/agriculture.module';
 import { ConfigModule } from '@nestjs/config';
-import { AgricultureSchema } from './agriculture/entities/agriculture.entity';
-import { ProducerSchema } from './producer/entities/producer.entity';
-import { FarmSchema } from './farm/entities/farm.entity';
+
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -18,7 +16,7 @@ import { FarmSchema } from './farm/entities/farm.entity';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE_NAME,
-      entities: [AgricultureSchema,ProducerSchema,FarmSchema],
+      entities: [__dirname + '/**/*.entity{.js,.ts}'],
       synchronize: false,
       autoLoadEntities: true,
     }),

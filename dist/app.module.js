@@ -14,9 +14,6 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const agriculture_module_1 = require("./agriculture/agriculture.module");
 const config_1 = require("@nestjs/config");
-const agriculture_entity_1 = require("./agriculture/entities/agriculture.entity");
-const producer_entity_1 = require("./producer/entities/producer.entity");
-const farm_entity_1 = require("./farm/entities/farm.entity");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -31,7 +28,7 @@ exports.AppModule = AppModule = __decorate([
                 username: process.env.DB_USERNAME,
                 password: process.env.DB_PASSWORD,
                 database: process.env.DB_DATABASE_NAME,
-                entities: [agriculture_entity_1.AgricultureSchema, producer_entity_1.ProducerSchema, farm_entity_1.FarmSchema],
+                entities: [__dirname + '/**/*.entity{.js,.ts}'],
                 synchronize: false,
                 autoLoadEntities: true,
             }),
