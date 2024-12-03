@@ -1,4 +1,3 @@
-import { ProducerSchema } from 'src/producer/entities/producer.entity';
 import { FarmSchema } from '../../farm/entities/farm.entity';
 import {
   Entity,

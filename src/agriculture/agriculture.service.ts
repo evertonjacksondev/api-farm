@@ -1,8 +1,6 @@
 import {
   Injectable,
-  BadRequestException,
   NotFoundException,
-  ConflictException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -10,7 +8,7 @@ import { AgricultureSchema } from './entities/agriculture.entity';
 import { CreateAgricultureDto } from './dto/create-agriculture.dto';
 import { UpdateAgricultureDto } from './dto/update-agriculture.dto';
 import { FarmSchema } from '../farm/entities/farm.entity';
-import { ProducerSchema } from 'src/producer/entities/producer.entity';
+import { ProducerSchema } from '../producer/entities/producer.entity';
 
 @Injectable()
 export class AgricultureService {

@@ -48,7 +48,7 @@ describe('ProducerController', () => {
       phone: '+5511987654321',
       UF: 'SP',
       city: 'Arujá',
-      number: 12,
+      number: '12',
       neighborhood: 'Centro',
       createdAt: new Date(),
       updatedAt: new Date(),

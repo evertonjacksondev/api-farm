@@ -23,7 +23,7 @@ describe('FarmController', () => {
               email: 'contaato@fazendaexemplo.com',
               totalArea: 500,
               arable: 500,
-              producer: 48,
+              producerId: 48,
               UF: 'SP',
               city: 'Arujá',
               number: 12,

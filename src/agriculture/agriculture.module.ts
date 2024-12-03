@@ -5,7 +5,7 @@ import { AgricultureSchema } from './entities/agriculture.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { FarmSchema } from '../farm/entities/farm.entity';
 import { FarmModule } from '../farm/farm.module';
-import { ProducerSchema } from 'src/producer/entities/producer.entity';
+import { ProducerSchema } from '../producer/entities/producer.entity';
 
 @Module({
   imports: [
