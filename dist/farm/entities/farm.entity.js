@@ -83,6 +83,6 @@ __decorate([
     __metadata("design:type", Date)
 ], FarmSchema.prototype, "updatedAt", void 0);
 exports.FarmSchema = FarmSchema = __decorate([
-    (0, typeorm_1.Entity)({ name: 'farm_schema', schema: 'public' })
+    (0, typeorm_1.Entity)({ name: 'farm_schema' })
 ], FarmSchema);
 //# sourceMappingURL=farm.entity.js.map

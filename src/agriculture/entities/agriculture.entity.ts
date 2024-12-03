@@ -14,7 +14,7 @@ export enum Name {
   CAFE = 'Café',
   CANADEAÇUCAR = 'Cana de Açúcar',
 }
-@Entity({name:'agriculture_schema',schema: 'public' })
+@Entity({name:'agriculture_schema' })
 export class AgricultureSchema {
   @PrimaryGeneratedColumn()
   id: number;

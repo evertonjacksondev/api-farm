@@ -6,7 +6,7 @@ import {
 } from 'typeorm';
 
 
-@Entity({name:'producer_schema',schema: 'public' })
+@Entity({name:'producer_schema' })
 export class ProducerSchema {
   @PrimaryGeneratedColumn()
   id: number;

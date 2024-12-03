@@ -62,6 +62,6 @@ __decorate([
     __metadata("design:type", Date)
 ], AgricultureSchema.prototype, "updatedAt", void 0);
 exports.AgricultureSchema = AgricultureSchema = __decorate([
-    (0, typeorm_1.Entity)({ name: 'agriculture_schema', schema: 'public' })
+    (0, typeorm_1.Entity)({ name: 'agriculture_schema' })
 ], AgricultureSchema);
 //# sourceMappingURL=agriculture.entity.js.map
