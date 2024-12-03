@@ -3,9 +3,9 @@ import { DashboardController } from './dashboard.controller';
 import { DashBoardService } from './dashboard.service';
 
 import { Module } from '@nestjs/common';
-import { FarmSchema } from 'src/farm/entities/farm.entity';
-import { AgricultureSchema } from 'src/agriculture/entities/agriculture.entity';
-import { ProducerSchema } from 'src/producer/entities/producer.entity';
+import { FarmSchema } from '../farm/entities/farm.entity';
+import { AgricultureSchema } from '../agriculture/entities/agriculture.entity';
+import { ProducerSchema } from '../producer/entities/producer.entity';
 
 @Module({
   imports: [

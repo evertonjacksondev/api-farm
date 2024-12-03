@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { FarmSchema } from 'src/farm/entities/farm.entity';
+import { FarmSchema } from '../farm/entities/farm.entity';
 import { AgricultureSchema } from 'src/agriculture/entities/agriculture.entity';
-import { ProducerSchema } from 'src/producer/entities/producer.entity';
+import { ProducerSchema } from '../producer/entities/producer.entity';
 
 @Injectable()
 export class DashBoardService {
