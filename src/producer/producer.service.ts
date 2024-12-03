@@ -10,7 +10,6 @@ import { ProducerSchema } from './entities/producer.entity';
 import { CreateProducerDto } from './dto/create-producer.dto';
 import { UpdateProducerDto } from './dto/update-producer.dto';
 import { cpf, cnpj } from 'cpf-cnpj-validator';
-import { FarmSchema } from '../farm/entities/farm.entity';
 
 @Injectable()
 export class ProducerService {
@@ -18,8 +17,6 @@ export class ProducerService {
     @InjectRepository(ProducerSchema)
     private producerRepository: Repository<ProducerSchema>,
 
-    @InjectRepository(ProducerSchema)
-    private farmRepository: Repository<FarmSchema>,
   ) {}
 
   async getProducerId(id: number) {

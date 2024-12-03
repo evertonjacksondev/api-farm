@@ -2,11 +2,9 @@ import { Repository } from 'typeorm';
 import { ProducerSchema } from './entities/producer.entity';
 import { CreateProducerDto } from './dto/create-producer.dto';
 import { UpdateProducerDto } from './dto/update-producer.dto';
-import { FarmSchema } from '../farm/entities/farm.entity';
 export declare class ProducerService {
     private producerRepository;
-    private farmRepository;
-    constructor(producerRepository: Repository<ProducerSchema>, farmRepository: Repository<FarmSchema>);
+    constructor(producerRepository: Repository<ProducerSchema>);
     getProducerId(id: number): Promise<ProducerSchema>;
     getProducerList(page: number, limit: number): Promise<{
         data: ProducerSchema[];

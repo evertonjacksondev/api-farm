@@ -19,9 +19,8 @@ const typeorm_2 = require("typeorm");
 const producer_entity_1 = require("./entities/producer.entity");
 const cpf_cnpj_validator_1 = require("cpf-cnpj-validator");
 let ProducerService = class ProducerService {
-    constructor(producerRepository, farmRepository) {
+    constructor(producerRepository) {
         this.producerRepository = producerRepository;
-        this.farmRepository = farmRepository;
     }
     async getProducerId(id) {
         const producer = await this.producerRepository.findOne({ where: { id } });
@@ -94,8 +93,6 @@ exports.ProducerService = ProducerService;
 exports.ProducerService = ProducerService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(producer_entity_1.ProducerSchema)),
-    __param(1, (0, typeorm_1.InjectRepository)(producer_entity_1.ProducerSchema)),
-    __metadata("design:paramtypes", [typeorm_2.Repository,
-        typeorm_2.Repository])
+    __metadata("design:paramtypes", [typeorm_2.Repository])
 ], ProducerService);
 //# sourceMappingURL=producer.service.js.map
