@@ -8,7 +8,7 @@ import {
   JoinColumn,
 } from 'typeorm';
 
-@Entity('farm_schema')
+@Entity({name:'farm_schema',schema: 'public' })
 export class FarmSchema {
   @PrimaryGeneratedColumn()
   id: number;

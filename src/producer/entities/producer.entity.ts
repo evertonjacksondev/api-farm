@@ -5,7 +5,9 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('producer_schema')
+
+@Entity({name:'producer_schema',schema: 'public' })
+
 export class ProducerSchema {
   @PrimaryGeneratedColumn()
   id: number;
