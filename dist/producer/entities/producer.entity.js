@@ -63,6 +63,6 @@ __decorate([
     __metadata("design:type", Date)
 ], ProducerSchema.prototype, "updatedAt", void 0);
 exports.ProducerSchema = ProducerSchema = __decorate([
-    (0, typeorm_1.Entity)()
+    (0, typeorm_1.Entity)('producer_schema')
 ], ProducerSchema);
 //# sourceMappingURL=producer.entity.js.map
