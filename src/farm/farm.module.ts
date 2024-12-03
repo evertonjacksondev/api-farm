@@ -3,7 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { FarmService } from './farm.service';
 import { FarmController } from './farm.controller';
 import { FarmSchema } from './entities/farm.entity';
-import { ProducerModule } from '../producer/producer.module';
+import { ProducerModule } from 'src/producer/producer.module';
 @Module({
   imports: [TypeOrmModule.forFeature([FarmSchema]), ProducerModule],
   providers: [FarmService],
