@@ -20,6 +20,7 @@ import { FarmSchema } from './farm/entities/farm.entity';
       database: process.env.DB_DATABASE_NAME,
       entities: [AgricultureSchema,ProducerSchema,FarmSchema],
       synchronize: false,
+      autoLoadEntities: true,
     }),
     DashboardModule,
     AgriculturaModule,

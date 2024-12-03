@@ -33,6 +33,7 @@ exports.AppModule = AppModule = __decorate([
                 database: process.env.DB_DATABASE_NAME,
                 entities: [agriculture_entity_1.AgricultureSchema, producer_entity_1.ProducerSchema, farm_entity_1.FarmSchema],
                 synchronize: false,
+                autoLoadEntities: true,
             }),
             dashboard_module_1.DashboardModule,
             agriculture_module_1.AgriculturaModule,
