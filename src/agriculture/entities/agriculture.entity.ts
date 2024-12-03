@@ -34,7 +34,6 @@ export class AgricultureSchema {
   })
   farm: FarmSchema;
 
-
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   plantingDate: Date;
 

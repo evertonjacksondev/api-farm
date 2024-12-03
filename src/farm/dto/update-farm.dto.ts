@@ -73,7 +73,6 @@ export class UpdateFarmDto {
   @IsString()
   neighborhood: string;
 
-
   @ApiProperty({
     description: 'Área total da fazenda (em hectares)',
     example: 100,

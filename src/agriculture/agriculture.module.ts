@@ -9,7 +9,7 @@ import { ProducerSchema } from '../producer/entities/producer.entity';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([FarmSchema, AgricultureSchema,ProducerSchema]),
+    TypeOrmModule.forFeature([FarmSchema, AgricultureSchema, ProducerSchema]),
     FarmModule,
   ],
   controllers: [AgricultureController],

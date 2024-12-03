@@ -22,7 +22,6 @@ export class FarmSchema {
   @Column({ unique: true })
   farmName: string;
 
-
   @Column({ unique: true })
   email: string;
 
@@ -44,12 +43,14 @@ export class FarmSchema {
   @Column()
   neighborhood: string;
 
-  @ManyToOne(() => ProducerSchema, (producer) => producer.id, { onDelete: 'CASCADE' })
+  @ManyToOne(() => ProducerSchema, (producer) => producer.id, {
+    onDelete: 'CASCADE',
+  })
   @JoinColumn({ name: 'producerId' })
   producer: ProducerSchema;
 
   @Column()
-  producerId: number; 
+  producerId: number;
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date;

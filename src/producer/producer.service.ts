@@ -88,14 +88,13 @@ export class ProducerService {
       if (!producer) {
         throw new NotFoundException('Produtor não encontrado');
       }
-  
+
       await this.producerRepository.remove(producer);
     } catch (error) {
       console.error('Erro ao remover o produtor:', error);
       throw new InternalServerErrorException('Erro ao remover o produtor');
     }
   }
-  
 
   private isValidCpfCnpj(cpfCnpj: string): boolean {
     const cleanedCpfCnpj = cpfCnpj.replace(/[^\d]+/g, '');

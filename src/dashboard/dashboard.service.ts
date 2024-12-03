@@ -53,37 +53,32 @@ export class DashBoardService {
   }
 
   async getFarmsByLandUse(): Promise<any> {
-  // Consultando a área usada na agricultura
-  const queryAgriculture = await this.agricultureRepository
-    .createQueryBuilder('agriculture')
-    .select('SUM(agriculture.areaUsed)', 'totalAreaUsed')
-    .getRawOne();
+    // Consultando a área usada na agricultura
+    const queryAgriculture = await this.agricultureRepository
+      .createQueryBuilder('agriculture')
+      .select('SUM(agriculture.areaUsed)', 'totalAreaUsed')
+      .getRawOne();
 
-  // Consultando a área arável nas fazendas
-  const queryFarm = await this.farmRepository
-    .createQueryBuilder('farm')
-    .select('SUM(farm.arable)', 'totalArable')
-    .getRawOne();
+    // Consultando a área arável nas fazendas
+    const queryFarm = await this.farmRepository
+      .createQueryBuilder('farm')
+      .select('SUM(farm.arable)', 'totalArable')
+      .getRawOne();
 
-  // Convertendo os valores para números e garantindo que não sejam nulos
-  const totalAreaUsed = Number(queryAgriculture.totalAreaUsed) || 0;
-  const totalArable = Number(queryFarm.totalArable) || 0;
+    // Convertendo os valores para números e garantindo que não sejam nulos
+    const totalAreaUsed = Number(queryAgriculture.totalAreaUsed) || 0;
+    const totalArable = Number(queryFarm.totalArable) || 0;
 
-  // Calculando a área utilizada, não utilizada e disponível
-  const used = totalAreaUsed;
-  const unused = totalArable - totalAreaUsed;
+    // Calculando a área utilizada, não utilizada e disponível
+    const used = totalAreaUsed;
+    const unused = totalArable - totalAreaUsed;
 
-  // Retornando um array de objetos, cada um com uma única propriedade
-  return [
-    { used },
-    { unused },
-  ];
-}
+    // Retornando um array de objetos, cada um com uma única propriedade
+    return [{ used }, { unused }];
+  }
 
-async getAllProducer() {
-  const totalProducers = await this.producerRepository.count();
-  return { totalProducers };
-}
-
-
+  async getAllProducer() {
+    const totalProducers = await this.producerRepository.count();
+    return { totalProducers };
+  }
 }

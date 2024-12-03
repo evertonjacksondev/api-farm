@@ -6,7 +6,6 @@ export class CreateFarmDto {
     description: 'ID do produtor associado à fazenda',
     example: 123,
   })
-
   @IsNotEmpty()
   producerId: number;
 
@@ -72,12 +71,10 @@ export class CreateFarmDto {
   @IsString()
   neighborhood: string;
 
-
   @ApiProperty({
     description: 'Área total da fazenda (em hectares)',
     example: 100,
   })
-
   @IsNotEmpty()
   totalArea: number;
 

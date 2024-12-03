@@ -22,8 +22,6 @@ export class UpdateAgricultureDto {
     description: 'Nova data de plantio',
     example: '2023-11-01T00:00:00.000Z',
   })
-
-
   @ApiProperty({
     description: 'ID da fazenda relacionada à cultura',
     example: 456,

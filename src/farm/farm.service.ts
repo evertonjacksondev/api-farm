@@ -121,14 +121,13 @@ export class FarmService {
     });
 
     try {
-  
-    if (!farm) {
-      throw new NotFoundException(`Fazenda com ID ${id} não encontrado.`);
+      if (!farm) {
+        throw new NotFoundException(`Fazenda com ID ${id} não encontrado.`);
+      }
+      await this.farmRepository.update(id, updateFarmDto);
+    } catch (error) {
+      console.log(error);
     }
-    await this.farmRepository.update(id, updateFarmDto);
-  } catch (error) {
-      console.log(error)
-  }
     return farm;
   }
 

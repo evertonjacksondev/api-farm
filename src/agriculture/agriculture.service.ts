@@ -1,7 +1,4 @@
-import {
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { AgricultureSchema } from './entities/agriculture.entity';
@@ -18,7 +15,7 @@ export class AgricultureService {
 
     @InjectRepository(FarmSchema)
     private readonly farmRepository: Repository<FarmSchema>,
-    
+
     @InjectRepository(ProducerSchema)
     private readonly producerRepository: Repository<ProducerSchema>,
   ) {}
@@ -47,7 +44,7 @@ export class AgricultureService {
     const [data, total] = await this.agricultureRepository.findAndCount({
       skip: (page - 1) * limit,
       take: limit,
-      relations: ['farm','farm.producer'],
+      relations: ['farm', 'farm.producer'],
     });
 
     return {

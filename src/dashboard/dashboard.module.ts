@@ -8,8 +8,10 @@ import { AgricultureSchema } from '../agriculture/entities/agriculture.entity';
 import { ProducerSchema } from '../producer/entities/producer.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([FarmSchema, AgricultureSchema, ProducerSchema])],
+  imports: [
+    TypeOrmModule.forFeature([FarmSchema, AgricultureSchema, ProducerSchema]),
+  ],
   controllers: [DashboardController],
   providers: [DashBoardService],
 })
-export class DashboardModule { }
+export class DashboardModule {}
